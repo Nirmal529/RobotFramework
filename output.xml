@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220725 22:43:01.484" rpa="false" schemaversion="3">
+<suite id="s1" name="Demo2" source="C:\Users\Gaurav Sharma\PycharmProjects\RobotFramework\Demo2.robot">
+<test id="s1-t1" name="Validate Cards display in the shopping page" line="17">
+<kw name="Open the browser with the mortgage payment url" library="resource" type="SETUP">
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>executable_path=D:\chromedriver.exe</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20220725 22:43:01.961" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20220725 22:43:01.961" endtime="20220725 22:43:04.118"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>https://www.rahulshettyacademy.com/loginpagePractise/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220725 22:43:04.121" level="INFO">Opening url 'https://www.rahulshettyacademy.com/loginpagePractise/'</msg>
+<status status="PASS" starttime="20220725 22:43:04.119" endtime="20220725 22:43:05.246"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220725 22:43:05.246" endtime="20220725 22:43:05.389"/>
+</kw>
+<status status="PASS" starttime="20220725 22:43:01.960" endtime="20220725 22:43:05.390"/>
+</kw>
+<kw name="Fill the login form">
+<arg>${user_name}</arg>
+<arg>${valid_password}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//label[text()='Username:']//parent::div[@class='form-group']//input</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220725 22:43:05.394" level="INFO">Typing text 'rahulshettyacademy' into text field '//label[text()='Username:']//parent::div[@class='form-group']//input'.</msg>
+<status status="PASS" starttime="20220725 22:43:05.393" endtime="20220725 22:43:05.579"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>//label[text()='Password:']//parent::div[@class='form-group']//input</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220725 22:43:05.582" level="INFO">Typing password into text field '//label[text()='Password:']//parent::div[@class='form-group']//input'.</msg>
+<msg timestamp="20220725 22:43:05.679" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220725 22:43:05.756" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220725 22:43:05.580" endtime="20220725 22:43:05.756"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//input[@name='signin']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220725 22:43:05.757" level="INFO">Clicking button '//input[@name='signin']'.</msg>
+<status status="PASS" starttime="20220725 22:43:05.756" endtime="20220725 22:43:05.851"/>
+</kw>
+<status status="PASS" starttime="20220725 22:43:05.391" endtime="20220725 22:43:05.851"/>
+</kw>
+<kw name="Wait until element is located in the page">
+<arg>${shop_page_to_load}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220725 22:43:05.857" endtime="20220725 22:43:10.070"/>
+</kw>
+<status status="PASS" starttime="20220725 22:43:05.853" endtime="20220725 22:43:10.071"/>
+</kw>
+<kw name="Verify card title in shop page">
+<kw name="Create List" library="BuiltIn">
+<var>@{expCardList}</var>
+<arg>iphone X</arg>
+<arg>Samsung Note 8</arg>
+<arg>Nokia Edge</arg>
+<arg>Blackberry</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220725 22:43:10.072" level="INFO">@{expCardList} = [ iphone X | Samsung Note 8 | Nokia Edge | Blackberry ]</msg>
+<status status="PASS" starttime="20220725 22:43:10.072" endtime="20220725 22:43:10.072"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${elements}</var>
+<arg>xapth:(//h4[@class='card-title']//a)</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20220725 22:43:10.085" level="INFO">${elements} = []</msg>
+<status status="PASS" starttime="20220725 22:43:10.072" endtime="20220725 22:43:10.085"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{actulList}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220725 22:43:10.086" level="INFO">@{actulList} = [ ]</msg>
+<status status="PASS" starttime="20220725 22:43:10.086" endtime="20220725 22:43:10.086"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>${elements}</value>
+<iter>
+<var name="${element}">[]</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220725 22:43:10.088" level="FAIL">Resolving variable '${element.text}' failed: AttributeError: 'list' object has no attribute 'text'</msg>
+<status status="FAIL" starttime="20220725 22:43:10.086" endtime="20220725 22:43:10.088"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>@{actulList}</arg>
+<arg>${element}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" starttime="20220725 22:43:10.088" endtime="20220725 22:43:10.088"/>
+</kw>
+<status status="FAIL" starttime="20220725 22:43:10.086" endtime="20220725 22:43:10.088"/>
+</iter>
+<status status="FAIL" starttime="20220725 22:43:10.086" endtime="20220725 22:43:10.089"/>
+</for>
+<kw name="Lists Should Be Equal" library="Collections">
+<arg>${expCardList}</arg>
+<arg>${actulList}</arg>
+<doc>Fails if given lists are unequal.</doc>
+<status status="NOT RUN" starttime="20220725 22:43:10.089" endtime="20220725 22:43:10.089"/>
+</kw>
+<status status="FAIL" starttime="20220725 22:43:10.071" endtime="20220725 22:43:10.089"/>
+</kw>
+<kw name="Close Browser Session" library="resource" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220725 22:43:10.089" endtime="20220725 22:43:12.250"/>
+</kw>
+<status status="PASS" starttime="20220725 22:43:10.089" endtime="20220725 22:43:12.251"/>
+</kw>
+<status status="FAIL" starttime="20220725 22:43:01.959" endtime="20220725 22:43:12.251">Resolving variable '${element.text}' failed: AttributeError: 'list' object has no attribute 'text'</status>
+</test>
+<doc>To Validate the login form</doc>
+<status status="FAIL" starttime="20220725 22:43:01.487" endtime="20220725 22:43:12.254"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Demo2">Demo2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

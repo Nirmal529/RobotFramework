@@ -48,7 +48,7 @@ Verify card title in shop page
     @{actulList}=       Create List
     FOR    ${element}  IN   ${elements}
         LOG     ${element.text}
-        #LOG     Get Text    ${element}
+        LOG     Get Text    ${element}
         Append To List      @{actulList}    ${element}
     END
     Lists Should Be Equal   ${expCardList}   ${actulList}

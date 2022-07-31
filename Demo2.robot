@@ -2,7 +2,7 @@
 Documentation   To Validate the login form
 Library         SeleniumLibrary
 Library         Collections
-Test Setup      Open the browser with the mortgage payment url
+Test Setup      Open the browser with the mortgage payment url.
 Test Teardown   Close Browser Session
 Resource        resource.robot
 

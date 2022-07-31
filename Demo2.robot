@@ -15,7 +15,7 @@ Resource        resource.robot
  #   Verify error message is correct
 
 Validate Cards display in the shopping page
-    #Fill the login form     ${user_name}    ${valid_password}
+    Fill the login form     ${user_name}    ${valid_password}
     Wait until element is located in the page   ${shop_page_to_load}
     Verify card title in shop page
 
